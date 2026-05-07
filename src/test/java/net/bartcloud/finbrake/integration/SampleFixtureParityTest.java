@@ -39,9 +39,8 @@ class SampleFixtureParityTest {
                 }
                 LoadAttemptRequest req = mapper.readValue(line, LoadAttemptRequest.class);
                 Optional<LoadDecision> decision = useCase.process(req.toDomain());
-                if (decision.isPresent()) {
-                    actual.add(mapper.writeValueAsString(LoadDecisionResponse.from(decision.get())));
-                }
+                decision.ifPresent(
+                        loadDecision -> actual.add(mapper.writeValueAsString(LoadDecisionResponse.from(loadDecision))));
             }
         }
         assertThat(actual).containsExactlyElementsOf(expected);

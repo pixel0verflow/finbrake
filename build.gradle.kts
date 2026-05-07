@@ -40,7 +40,7 @@ dependencies {
 spotless {
     java {
         target("src/**/*.java")
-        palantirJavaFormat("2.50.0")
+        palantirJavaFormat("2.71.0")
         removeUnusedImports()
         trimTrailingWhitespace()
         endWithNewline()
