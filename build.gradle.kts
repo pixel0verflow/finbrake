@@ -72,7 +72,7 @@ tasks.withType<JavaCompile>().configureEach {
 }
 
 tasks.named<JavaCompile>("compileTestJava") {
-    options.errorprone.isEnabled.set(false)
+    options.errorprone.enabled.set(false)
 }
 
 tasks.withType<Test> {
