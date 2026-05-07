@@ -1,0 +1,5 @@
+{"id":"1","customer_id":"c1","load_amount":"$4000.00","time":"2024-01-01T10:00:00Z"}
+{"id":"2","customer_id":"c1","load_amount":"$1500.00","time":"2024-01-01T11:00:00Z"}
+{"id":"3","customer_id":"c1","load_amount":"$1000.00","time":"2024-01-01T12:00:00Z"}
+{"id":"4","customer_id":"c1","load_amount":"$1.00","time":"2024-01-01T13:00:00Z"}
+{"id":"5","customer_id":"c1","load_amount":"$1000.00","time":"2024-01-02T00:00:00Z"}

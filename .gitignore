@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Local-only test fixtures ###
+src/test/resources/input.txt
+src/test/resources/output.txt
