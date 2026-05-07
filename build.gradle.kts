@@ -1,8 +1,12 @@
+import net.ltgt.gradle.errorprone.errorprone
+
 plugins {
     java
     id("org.springframework.boot") version "4.0.6"
     id("io.spring.dependency-management") version "1.1.7"
     id("com.diffplug.spotless") version "7.0.4"
+    id("com.github.spotbugs") version "6.0.26"
+    id("net.ltgt.errorprone") version "4.1.0"
 }
 
 group = "net.bartcloud"
@@ -29,6 +33,8 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-data-jpa-test")
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    errorprone("com.google.errorprone:error_prone_core:2.38.0")
 }
 
 spotless {
@@ -39,6 +45,33 @@ spotless {
         trimTrailingWhitespace()
         endWithNewline()
     }
+}
+
+spotbugs {
+    toolVersion.set("4.9.6")
+    effort = com.github.spotbugs.snom.Effort.MAX
+    reportLevel = com.github.spotbugs.snom.Confidence.HIGH
+}
+
+tasks.withType<com.github.spotbugs.snom.SpotBugsTask>().configureEach {
+    reports.create("html") {
+        required.set(true)
+        outputLocation.set(layout.buildDirectory.file("reports/spotbugs/${name}.html"))
+    }
+    reports.create("xml") {
+        required.set(false)
+    }
+}
+
+tasks.withType<JavaCompile>().configureEach {
+    options.errorprone {
+        disableWarningsInGeneratedCode.set(true)
+        excludedPaths.set(".*/build/generated/.*")
+    }
+}
+
+tasks.named<JavaCompile>("compileTestJava") {
+    options.errorprone.isEnabled.set(false)
 }
 
 tasks.withType<Test> {
