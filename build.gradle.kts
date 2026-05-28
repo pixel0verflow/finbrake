@@ -5,7 +5,7 @@ plugins {
     id("org.springframework.boot") version "4.0.6"
     id("io.spring.dependency-management") version "1.1.7"
     id("com.diffplug.spotless") version "8.4.0"
-    id("com.github.spotbugs") version "6.5.4"
+    id("com.github.spotbugs") version "6.5.5"
     id("net.ltgt.errorprone") version "5.1.0"
 }
 
