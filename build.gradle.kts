@@ -34,7 +34,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
-    errorprone("com.google.errorprone:error_prone_core:2.49.0")
+    errorprone("com.google.errorprone:error_prone_core:2.50.0")
 }
 
 spotless {
